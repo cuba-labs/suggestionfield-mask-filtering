@@ -2,6 +2,31 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://caption"
         messagesPack="com.company.sample.web">
+
+    <data>
+        <collection id="names"
+                    class="com.company.sample.entity.NameEntity">
+            <loader>
+                <query>
+                    <![CDATA[
+                        select n from sample_NameEntity n
+                    ]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
     <layout>
+        <hbox spacing="true">
+            <table dataContainer="names"
+                   caption="Available similar names:"
+                   height="300px" width="300px">
+                <columns>
+                    <column id="name"/>
+                </columns>
+            </table>
+            <suggestionField id="suggestionField"
+                             caption="Type 'B.z' and see for results:"/>
+        </hbox>
     </layout>
 </window>
